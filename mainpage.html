@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.responsive {
+  width: 100%;
+  height: auto;
+}
+</style>
+
+<script>
+var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+var firstDate = new Date(1998,12,21);
+var secondDate = new Date(2119,02,6);
+var currentTime = new Date();
+var diffDays = Math.round(Math.abs((firstDate.getTime() - currentTime.getTime())/(oneDay)));
+
+</script>
+
+</head>
+
+
+<body>
+
+<p id="demo"></p>
+
+<script>
+
+document.getElementById("demo").innerHTML =diffDays;
+
+</script>
+
+
+<img src="https://lh3.googleusercontent.com/s9aDCmkda4WXiNxUEVMYvEcFmJBSBM-tODsmY5T3PsqPNT-KAefPwYeYqS-AZ-3mkGCzfM1QbzxOhPQbtlWV=w1079-h969-rw" alt="Nature" class="responsive">
+</body>
+</html>
