@@ -1,37 +1,163 @@
-<!DOCTYPE html>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://fonts.googleapis.com/css?family=Berkshire+Swash|Dr+Sugiyama|Gaegu:700|Patrick+Hand+SC|Reenie+Beanie" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:700" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css?family=Khula:800" rel="stylesheet">
+
 <style>
-.responsive {
-  width: 100%;
+
+  body{
+    background:#22344e;
+    margin:0;
+    /* background: url('https://erc.barnard.edu/sites/default/files/styles/square_thumbnail/public/compressedited2.jpg?itok=zlZukncm') no-repeat fixed;
+-webkit-background-size: contain;
+-moz-background-size: contain;
+-o-background-size: contain;
+background-size: contain; */
+  }
+
+img {
+  padding:1%;
+  background:white;
+  display: inline-block;
+  width: 70%;
   height: auto;
+  /* max-height: 90%; */
+  max-width: 90%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
 }
+
+#howmany{
+  color: white;
+  font-size:6vmin;
+  /* border-style: none none dotted none; */
+  background:  ;
+  position: fixed;
+  bottom:1%;
+  left: 50%;
+  margin: 0;
+  text-align: center;
+  transform: translate(-50%,0%);
+  white-space: nowrap;
+  width:100%;
+  font-family: 'Gaegu', cursive;
+}
+
+#parentmessage{
+  text-align:center;
+  margin-bottom: 1vh;
+
+}
+
+#message{
+  color: white;
+  margin:0;
+  white-space:nowrap;
+  font-size: 6vmin;
+  overflow: auto;
+  display: contents;
+  text-align: center;
+  color:#cb410b;
+  font-family: 'Gaegu', cursive;
+
+
+}
+
+.messagedrop{
+  animation: textdrop 0.6s ease-in;
+  animation-fill-mode: forwards;
+  opacity: 0;
+  animation-delay: 1s;
+  background:;
+}
+
+@keyframes textdrop {
+  0%{
+    opacity: 0;
+    transform: translate(0,-10%);
+  }
+  100%{
+    opacity: 1;
+    transform: translate(0,0%);
+  }
+}
+
+.imagefade{
+  animation: picturefade 0.6s ease-in-out;
+  animation-fill-mode: forwards;
+  opacity: 0;
+  animation-delay: 0.2s;
+}
+
+@keyframes picturefade {
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
+.animatedhowmany{
+  animation: howmanyfade 1.3s ease-in-out;
+  animation-fill-mode: forwards;
+  opacity: 0;
+  animation-delay: 2s;
+}
+
+@keyframes howmanyfade {
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 0.75;
+  }
+}
+
 </style>
 
 <script>
 var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
-var firstDate = new Date(1998,12,21);
-var secondDate = new Date(2119,02,6);
+var firstDate = new Date(1998,11,21);
 var currentTime = new Date();
 var diffDays = Math.round(Math.abs((firstDate.getTime() - currentTime.getTime())/(oneDay)));
 
+</script>
+<script type="text/javascript">
+  var x="https://lh5.googleusercontent.com/D-bbKZfT4F57LboPCT-dzsxs38te54bKZKJfPeBQ5oOz3dY0yGVqTdglj5LBZrAZZCw_5kP4gBgCw2v5gNvI=w1079-h969-rw"
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+var backgroundImageFile =x;
+
+$('#imageId')[0].setAttribute('src',backgroundImageFile);
+});
 </script>
 
 </head>
 
 
 <body>
+<div id="parentmessage" class="messagedrop">
+<div id="message">
+<h1>we yogibbs</h1>
+</div></div>
 
-<p id="demo"></p>
+<img src="backgroundImageFile" class="imagefade" id="imageId" alt="smollbb">
 
+<p id="howmany" class="animatedhowmany"></p>
 <script>
-
-document.getElementById("demo").innerHTML =diffDays;
-
+document.getElementById("howmany").innerHTML ="SMOLLBB IS "+ diffDays + " MANY TODAY";
 </script>
 
-
-<img src="https://lh3.googleusercontent.com/s9aDCmkda4WXiNxUEVMYvEcFmJBSBM-tODsmY5T3PsqPNT-KAefPwYeYqS-AZ-3mkGCzfM1QbzxOhPQbtlWV=w1079-h969-rw" alt="Nature" class="responsive">
 </body>
 </html>
