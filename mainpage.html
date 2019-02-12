@@ -4,8 +4,9 @@
 
 <link href="https://fonts.googleapis.com/css?family=Gaegu:300,700" rel="stylesheet">
 
-<style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+<style>
   body{
     background:#22344e;
     margin:0;
@@ -15,7 +16,6 @@
 -o-background-size: contain;
 background-size: contain; */
   }
-
 img {
   padding:1%;
   background:white;
@@ -29,7 +29,6 @@ img {
   left: 50%;
   transform: translate(-50%,-50%);
 }
-
 #howmany{
   color: white;
   font-size:6vmin;
@@ -46,28 +45,22 @@ img {
   font-family: 'Gaegu', cursive;
   font-weight: 300;
 }
-
 #parentmessage{
   text-align:center;
   margin-bottom: 1vh;
-
 }
-
 #message{
   color: white;
   margin:0;
   white-space:nowrap;
-  font-size: 6vmin;
+  font-size: 13vmin;
   overflow: auto;
   display: contents;
   text-align: center;
   color:#cb410b;
   font-family: 'Gaegu', cursive;
   font-weight: 700;
-
-
 }
-
 .messagedrop{
   animation: textdrop 0.6s ease-in;
   animation-fill-mode: forwards;
@@ -75,7 +68,6 @@ img {
   animation-delay: 1s;
   background:;
 }
-
 @keyframes textdrop {
   0%{
     opacity: 0;
@@ -86,14 +78,12 @@ img {
     transform: translate(0,0%);
   }
 }
-
 .imagefade{
   animation: picturefade 0.6s ease-in-out;
   animation-fill-mode: forwards;
   opacity: 0;
   animation-delay: 0.2s;
 }
-
 @keyframes picturefade {
   0%{
     opacity: 0;
@@ -102,14 +92,12 @@ img {
     opacity: 1;
   }
 }
-
 .animatedhowmany{
   animation: howmanyfade 1.3s ease-in-out;
   animation-fill-mode: forwards;
   opacity: 0;
   animation-delay: 2s;
 }
-
 @keyframes howmanyfade {
   0%{
     opacity: 0;
@@ -118,7 +106,6 @@ img {
     opacity: 0.75;
   }
 }
-
 </style>
 
 <script>
@@ -126,20 +113,24 @@ var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
 var firstDate = new Date(1998,11,21);
 var currentTime = new Date();
 var diffDays = Math.round(Math.abs((firstDate.getTime() - currentTime.getTime())/(oneDay)));
-
 </script>
-<script type="text/javascript">
-  var x="https://lh5.googleusercontent.com/D-bbKZfT4F57LboPCT-dzsxs38te54bKZKJfPeBQ5oOz3dY0yGVqTdglj5LBZrAZZCw_5kP4gBgCw2v5gNvI=w1079-h969-rw"
-</script>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<div id="picstyle">
 <script>
-$(document).ready(function(){
-var backgroundImageFile =x;
+window.addEventListener('load', loadText);
+function loadText(){
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', 'https://raw.githubusercontent.com/santi961/smollbb/master/pic.txt', true);
+  xhr.onload = function(){
+  $(document).ready(function(){
+  var backgroundImageFile =xhr.responseText;
+  $('#imageId')[0].setAttribute('src',backgroundImageFile);
+  });
+  }
 
-$('#imageId')[0].setAttribute('src',backgroundImageFile);
-});
-</script>
+  xhr.send();
+};
+
+</script></div>
 
 </head>
 
@@ -147,7 +138,24 @@ $('#imageId')[0].setAttribute('src',backgroundImageFile);
 <body>
 <div id="parentmessage" class="messagedrop">
 <div id="message">
-<h1>we yogibbs</h1>
+<h1><script>
+  window.addEventListener('load', loadText);
+  function loadText(){
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'https://raw.githubusercontent.com/santi961/smollbb/master/message.txt', true);
+
+    console.log('READYSTATE: ', xhr.readyState);
+
+    xhr.onload = function(){
+      console.log('READYSTATE: ', xhr.readyState);
+      if(this.status == 200){
+        document.getElementById('message').innerHTML = this.responseText;
+      }
+    }
+
+    xhr.send();
+  }
+</script></h1>
 </div></div>
 
 <img src="backgroundImageFile" class="imagefade" id="imageId" alt="smollbb">
