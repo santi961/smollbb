@@ -31,24 +31,43 @@
     left: 50%;
     transform: translate(-50%,-50%);
   }
+      
+  .tracking-in-contract {
+	-webkit-animation: tracking-in-contract 2s cubic-bezier(0.600, 0.040, 0.980, 0.335) infinite reverse both;
+	        animation: tracking-in-contract 2s cubic-bezier(0.600, 0.040, 0.980, 0.335) infinite reverse both;
+}
+      
+      @-webkit-keyframes tracking-in-contract {
+  0% {
+    letter-spacing: 1em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    letter-spacing: normal;
+    opacity: 1;
+  }
+}
+@keyframes tracking-in-contract {
+  0% {
+    letter-spacing: 1em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    letter-spacing: normal;
+    opacity: 1;
+  }
+}
   </style>
 
   </head>
   <body>
-  <div><video autoplay height="100%" width= auto></video>
-  <script>
-    const constraints = {
-      video: true
-    };
-
-    const captureVideoButton =
-  document.querySelector('#screenshot .capture-button');
-
-    const video = document.querySelector('video');
-
-    navigator.mediaDevices.getUserMedia(constraints).
-      then((stream) => {video.srcObject = stream});
-  </script></div>
-  <img src="https://media1.tenor.com/images/b8401d232cca2fa7cb5e0e876de4f3cd/tenor.gif?itemid=5096483" class="fish">
+    <h1 class="tracking-in-contract">MASSAGE</h1>
+    <img src="https://media1.tenor.com/images/b8401d232cca2fa7cb5e0e876de4f3cd/tenor.gif?itemid=5096483" class="fish">
   </body>
 </html>
