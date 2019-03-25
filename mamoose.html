@@ -9,26 +9,40 @@
   video{
     ouline: thick solid green;
     position: fixed;
-    top: 0.5%;
+    top: 0%;
     left: 50%;
     transform: translate(-50%,0%);
+    z-index: 1;
+  }
+
+  #button{
+    postion: fixed;
+    margin:0;
+    background: blue;
+    color:white;
+    width: 100%;
+    transform: translate(50%,100%);
+
   }
   </style>
 
   </head>
   <body>
-  <video autoplay height="90%" width= auto></video>
+  <div><video autoplay height="100%" width= auto></video>
   <script>
     const constraints = {
       video: true
     };
 
+    const captureVideoButton =
+  document.querySelector('#screenshot .capture-button');
+
     const video = document.querySelector('video');
 
     navigator.mediaDevices.getUserMedia(constraints).
       then((stream) => {video.srcObject = stream});
-  </script>
-  <center>
-  <button id="button">ineedmamoose23</button></center>
+  </script></div>
+<div id="button2">
+  <button class="capture-button">ineedmamoose23</button></div>
   </body>
 </html>
