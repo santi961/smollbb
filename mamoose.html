@@ -24,6 +24,13 @@
     transform: translate(50%,100%);
 
   }
+  .fish{
+    position: fixed;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
   </style>
 
   </head>
@@ -42,7 +49,6 @@
     navigator.mediaDevices.getUserMedia(constraints).
       then((stream) => {video.srcObject = stream});
   </script></div>
-<div id="button2">
-  <button class="capture-button">ineedmamoose23</button></div>
+  <img src="https://media1.tenor.com/images/b8401d232cca2fa7cb5e0e876de4f3cd/tenor.gif?itemid=5096483" class="fish">
   </body>
 </html>
