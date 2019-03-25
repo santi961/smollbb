@@ -5,7 +5,6 @@
 <body>
 
 <video id="video" width="1080" height="1920" autoplay></video>
-<button id="snap">Snap Photo</button>
 <canvas id="canvas" width="1080" height="1920"></canvas>
 
 <script>
@@ -17,7 +16,7 @@ if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
   navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
       //video.src = window.URL.createObjectURL(stream);
       video.srcObject = stream;
-      video.play();
+      video.play();  
   });
 }
 </script>
