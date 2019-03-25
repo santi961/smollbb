@@ -18,7 +18,7 @@
 
   </head>
   <body>
-  <video autoplay height="95%" width= auto></video>
+  <video autoplay height="100%" width= auto></video>
   <script>
     const constraints = {
       video: true
@@ -29,5 +29,7 @@
     navigator.mediaDevices.getUserMedia(constraints).
       then((stream) => {video.srcObject = stream});
   </script>
+  <button id="video">Capture Video</button>
   </body>
 </html>
+PUSH
