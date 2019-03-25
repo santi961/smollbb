@@ -1,33 +1,33 @@
-<html>
-<head>
-  <style>
+  <html>
+  <head>
+    <style>
 
-  body{
-    background:white;
+    body{
+      background:white;
+    }
+
+  video{
+    outline: thick solid green;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index:999;
   }
+  </style>
 
-video{
-  max-width: 100%;
-  outline: thick solid green;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-}
-</style>
+  </head>
+  <body>
+  <video autoplay height="95%" width= auto></video>
+  <script>
+    const constraints = {
+      video: true
+    };
 
-</head>
-<body>
-<video autoplay height="1920" width="1080"></video>
-<script>
-  const constraints = {
-    video: true
-  };
+    const video = document.querySelector('video');
 
-  const video = document.querySelector('video');
-
-  navigator.mediaDevices.getUserMedia(constraints).
-    then((stream) => {video.srcObject = stream});
-</script>
-</body>
-</html>
+    navigator.mediaDevices.getUserMedia(constraints).
+      then((stream) => {video.srcObject = stream});
+  </script>
+  </body>
+  </html>
