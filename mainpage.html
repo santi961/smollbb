@@ -28,7 +28,7 @@ background-size: contain; */
   }
 img {
   padding:1%;
-  background:white;
+  background:none;
   display: inline-block;
   width: 70%;
   height: auto;
@@ -129,7 +129,7 @@ var diffDays = Math.round(Math.abs((firstDate.getTime() - currentTime.getTime())
 window.addEventListener('load', loadText);
 function loadText(){
   var xhr = new XMLHttpRequest();
-  xhr.open('GET', 'https://raw.githubusercontent.com/santi961/smollbb/master/pic.txt', true);
+  xhr.open('GET', 'pic.txt', true);
   xhr.onload = function(){
   $(document).ready(function(){
   var backgroundImageFile =xhr.responseText;
@@ -152,7 +152,7 @@ function loadText(){
   window.addEventListener('load', loadText);
   function loadText(){
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'https://raw.githubusercontent.com/santi961/smollbb/master/message.txt', true);
+    xhr.open('GET', 'message.txt', true);
 
     console.log('READYSTATE: ', xhr.readyState);
 
