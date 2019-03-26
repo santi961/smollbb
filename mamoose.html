@@ -1,11 +1,9 @@
 <html>
   <head>
     <style>
-
     body{
-      background:grey;
+      background:#22344e;
     }
-
   video{
     ouline: thick solid green;
     position: fixed;
@@ -14,7 +12,6 @@
     transform: translate(-50%,0%);
     z-index: 1;
   }
-
   #button{
     postion: fixed;
     margin:0;
@@ -22,36 +19,39 @@
     color:white;
     width: 100%;
     transform: translate(50%,100%);
-
   }
-  .fish{
+  .gif{
+    height:85%;
+    width:auto;
     position: fixed;
-    z-index: 2;
+    z-index: 3;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%,-65%);
   }
-      
+
+  h1{
+    font-family: impact;
+    font-weight: bolder;
+    color:white;
+  }
   .tracking-in-contract {
 	-webkit-animation: tracking-in-contract 2s cubic-bezier(0.600, 0.040, 0.980, 0.335) infinite reverse both;
 	        animation: tracking-in-contract 2s cubic-bezier(0.600, 0.040, 0.980, 0.335) infinite reverse both;
-	 position: fixed;
-	  
-    z-index: 1;
-    top: 50%;
-    left: 50%;
-	  font-size:100%;
-    transform: translate(-50%,-10%); 
-	
+  position: fixed;
+  z-index: 2;
+  bottom: 5%;
+  left: 50%;
+	font-size:8em;
+  transform: translate(-47.5%,0%);
 }
-      
       @-webkit-keyframes tracking-in-contract {
   0% {
     letter-spacing: 1em;
     opacity: 0;
   }
-  40% {
-    opacity: 0.6;
+  75% {
+    opacity: 0.4;
   }
   100% {
     letter-spacing: normal;
@@ -63,7 +63,7 @@
     letter-spacing: 1em;
     opacity: 0;
   }
-  40% {
+  75% {
     opacity: 0.6;
   }
   100% {
@@ -75,7 +75,23 @@
 
   </head>
   <body>
-    <h1 class="tracking-in-contract">MASSAGE</h1>
-    <img src="https://media1.tenor.com/images/b8401d232cca2fa7cb5e0e876de4f3cd/tenor.gif?itemid=5096483" class="fish">
+  <div><video autoplay height="100%" width= auto></video>
+  <script>
+    const constraints = {
+      video: true
+    };
+    const captureVideoButton =
+  document.querySelector('#screenshot .capture-button');
+    const video = document.querySelector('video');
+    navigator.mediaDevices.getUserMedia(constraints).
+      then((stream) => {video.srcObject = stream});
+  </script></div>
+  <img src="https://github.com/mamoose961/mamoose/raw/master/Massage-Monster-3.gif" class="gif">
+
+<iframe src="https://github.com/anars/blank-audio/raw/master/250-milliseconds-of-silence.mp3" allow="autoplay" id="audio" style="display:none"></iframe>
+  <audio id="myAudio" autoplay loop>
+  <source src="https://github.com/mamoose961/mamoose/raw/master/massage.mp3" type="audio/ogg">
+</audio>
+<h1 class="tracking-in-contract">MASSAGE</h1>
   </body>
 </html>
