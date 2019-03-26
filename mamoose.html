@@ -76,17 +76,15 @@
 
   </head>
   <body>
-  <div><video autoplay height="100%" width= auto></video>
+  <video autoplay height="100%" width= auto></video>
   <script>
     const constraints = {
       video: true
     };
-    const captureVideoButton =
-  document.querySelector('#screenshot .capture-button');
     const video = document.querySelector('video');
     navigator.mediaDevices.getUserMedia(constraints).
       then((stream) => {video.srcObject = stream});
-  </script></div>
+  </script>
   <img src="MamooseAssets\MassageMonster.gif" class="gif">
 
 <iframe src="MamooseAssets\silence.mp3" allow="autoplay" id="audio" style="display:none"></iframe>
