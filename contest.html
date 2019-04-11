@@ -1,0 +1,21 @@
+<html>
+<head>
+  <style>
+  textarea {
+  width: 10em;
+  height: 10em;
+}
+  </style>
+<script>
+  async function paste(input) {
+    const text = await navigator.clipboard.readText();
+    input.value = text;
+     var input2 = text.replace(/[^0-9]/g,'');
+     if (input2.includes("669") == true) {
+        alert(input2);
+      }
+  }
+</script>
+
+</head>
+<body>
