@@ -11,8 +11,7 @@
     const text = await navigator.clipboard.readText();
     input.value = text;
      var input2 = text.replace(/[^0-9]/g,'');
-     if (input2.includes("669") == true) {
-        alert(input2);
+     if (input2.includes("999") == true) {
         var audio = new Audio('ContestAssets/Alarm.mp3');
         audio.play();
       }
