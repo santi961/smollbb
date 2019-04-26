@@ -16,6 +16,12 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+<script type="text/javascript">
+  let bbname
+  let bbfilename
+  let bbtitle
+</script>
+
 <style>
   body{
     background:#22344e;
@@ -28,7 +34,7 @@ background-size: contain; */
   }
 img {
   padding:1%;
-  background: white;
+  background: none;
   display: inline-block;
   width: 70%;
   height: auto;
@@ -124,52 +130,40 @@ var firstDate = new Date(1998,11,21);
 var currentTime = new Date();
 var diffDays = Math.round(Math.abs((firstDate.getTime() - currentTime.getTime())/(oneDay)));
 </script>
-<div id="picstyle">
-<script>
-window.addEventListener('load', loadText);
-function loadText(){
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET', 'pic.txt', true);
-  xhr.onload = function(){
-  $(document).ready(function(){
-  var backgroundImageFile =xhr.responseText;
-  $('#imageId')[0].setAttribute('src',backgroundImageFile);
-  });
-  }
 
-  xhr.send();
-};
+<script type="text/javascript">
+var url = "https://www.googleapis.com/drive/v3/files?orderBy=createdTime+desc&pageSize=1&q=%27168vvGRtUQjM7sprRhclIZqlZTCoDqgjo%27+in+parents&key=AIzaSyAK8jsoqumfAdDQaWcGhyBLGJlNMd4APDA";
 
-</script></div>
+$.ajax({
+method: "GET",
+cache: false,
+url: url,
+success: function(response) {
+  bbid = 'http://drive.google.com/uc?id=' + response.files[0].id;
+  document.getElementById('imageId').src = bbid;
 
+  bbfilename = response.files[0].name;
+  bbtitle = bbfilename.substring(0, bbfilename.indexOf("."));
+  document.getElementById('message').innerHTML = bbtitle;
+},
+error: function(error) {
+  alert('error')
+},
+});
+</script>
 </head>
 
-
 <body>
+
 <div id="parentmessage" class="messagedrop">
 <div id="message">
-<h1><script>
-  window.addEventListener('load', loadText);
-  function loadText(){
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'message.txt', true);
-
-    console.log('READYSTATE: ', xhr.readyState);
-
-    xhr.onload = function(){
-      console.log('READYSTATE: ', xhr.readyState);
-      if(this.status == 200){
-        document.getElementById('message').innerHTML = this.responseText;
-      }
-    }
-
-    xhr.send();
-  }
-</script></h1>
 </div></div>
+
 <div onclick="location.href='https://www.snapchat.com/unlock/?type=SNAPCODE&uuid=ce3d65a168104a7aace344e219c7ba68&metadata=01';">
-<img src="backgroundImageFile" class="imagefade" id="imageId">
-  </div>
+
+<img src="" class="imagefade" id="imageId">
+</div>
+
 <p id="howmany" class="animatedhowmany"></p>
 <script>
 document.getElementById("howmany").innerHTML ="SMOLLBB IS "+ diffDays + " MANY TODAY";
