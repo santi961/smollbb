@@ -1,0 +1,98 @@
+<head>
+
+  <link href="https://fonts.googleapis.com/css?family=Gaegu:300,700" rel="stylesheet">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <script>
+  var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+  var firstDate = new Date(1998,11,21);
+  var currentTime = new Date();
+  var diffDays = Math.round(Math.abs((firstDate.getTime() - currentTime.getTime())/(oneDay)));
+  </script>
+
+  <style>
+
+body{
+  background: blue;
+}
+
+#bbimg{
+  margin: 0;
+  width:90%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+
+#howmany{
+  position: fixed;
+  color: white;
+  font-size:7vw;
+  top: 1500px;
+  left: 50%;
+  margin: 0;
+  text-align: center;
+  transform: translate(-50%,0%);
+  font-family: 'Gaegu', cursive;
+  font-weight: 300;
+  width: 100%;
+}
+
+/* #howmany{
+  color: white;
+  font-size:7vw;
+  background:  ;
+  position: fixed;
+  bottom:1%;
+  left: 50%;
+  margin: 0;
+  text-align: center;
+  transform: translate(-50%,0%);
+  white-space: nowrap;
+  width:100%;
+  font-family: 'Gaegu', cursive;
+  font-weight: 300;
+} */
+
+  </style>
+</head>
+<body>
+  <div >
+<img src="http://drive.google.com/uc?id=1jtdGREKKD7WnS2g6cOKhksIHiQKx1qDs" id="bbimg"></div>
+
+<div id="howmany">asd</div>
+    <script>
+    document.getElementById("howmany").innerHTML ="SMOLLBB IS " +diffDays+ " MANY TODAY";
+    </script>
+
+
+    <!-- <script>
+    document.querySelector("#bbimg").addEventListener('load', function() {
+      var y = $("img").position();
+      console.log(y.top)
+
+var image_height = document.getElementById("bbimg").Height;
+console.log(image_height);
+var x = y.top + image_height;
+  alert("Top: " + x);
+  document.getElementById("howmany").style.top = image_height+y.top;
+    });
+    </script> -->
+
+<script>
+document.querySelector("#bbimg").addEventListener('load', function() {
+  var $el = $('#bbimg');
+  var top = $el.position().top;
+  console.log($el.position().top);
+
+  var $el2 = $('#howmany');
+  var bbheight = $el2.outerHeight(true)
+  console.log(bbheight);
+
+  document.getElementById("howmany").style.top= top - bbheight - 2;
+});
+</script>
+</body>
