@@ -13,8 +13,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link href="https://fonts.googleapis.com/css?family=Gaegu:300,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Sonsie+One" rel="stylesheet">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script>
+  $(function() {
+    var randomColor = Math.floor(Math.random()*16777215).toString(16);
+    $("body").css({
+        backgroundColor: '#' + randomColor
+    });
+  });
+</script>
 
 <script type="text/javascript">
   let bbname
@@ -26,14 +36,22 @@
   let h;
 </script>
 
+
+
 <style>
+.js-loading *,
+.js-loading *:before,
+.js-loading *:after {
+  animation-play-state: paused !important;
+}
+
   body{
     background:#22344e;
     margin:0;
 }
 img {
   padding:1%;
-  background: white;
+  background: none;
   display: inline-block;
   width: 70vw;
   height: auto;
@@ -43,6 +61,7 @@ img {
   transform: translate(-50%,-50%);
 }
 #howmany{
+  animation-play-state: paused;
   position: fixed;
   color: white;
   font-size:7vw;
@@ -57,28 +76,29 @@ img {
 }
 #parentmessage{
   text-align:center;
-  margin-bottom: 1vh;
+  margin: 0;
   position: relative;
   top: 2%;
   z-index: 999;
 }
 #message{
+  animation-play-state: paused;
   color: white;
   margin:0;
   white-space:nowrap;
-  font-size: 16vw;
+  font-size: 12vw;
   overflow: auto;
   display: contents;
   text-align: center;
-  color:#cb410b;
-  font-family: 'Gaegu', cursive;
-  font-weight: 700;
+  /* color:#cb410b; */
+  font-family:'Sonsie One', cursive;
+  /* font-weight: 700; */
 }
 .messagedrop{
   animation: textdrop 0.6s ease-in;
   animation-fill-mode: forwards;
   opacity: 0;
-  animation-delay: 3s;
+  animation-delay: 0.8s;
   background:;
 }
 @keyframes textdrop {
@@ -91,17 +111,22 @@ img {
     transform: translate(0,0%);
   }
 }
-.imagefade{
-  animation: picturefade 0.6s ease-in-out;
-  animation-fill-mode: forwards;
-  opacity: 0;
-  animation-delay: 2.4s;
+
+.imagefade {
+	        animation: slide-in-bck-tr 0.8s cubic-bezier(0.075, 0.820, 0.165, 1.000) forwards;
+          animation-delay: 0.01s;
+          opacity: 0;
 }
-@keyframes picturefade {
-  0%{
+
+
+@keyframes slide-in-bck-tr {
+  0% {
+            transform: translateZ(20vw) translateY(-50%) translateX(20vw);
     opacity: 0;
   }
-  100%{
+  100% {
+            transform: translateZ(-50%) translateY(-50%) translateX(-50%);
+            background: white;
     opacity: 1;
   }
 }
@@ -109,14 +134,14 @@ img {
   animation: howmanyfade 1.3s ease-in-out;
   animation-fill-mode: forwards;
   opacity: 0;
-  animation-delay: 4s;
+  animation-delay: 1.2s;
 }
 @keyframes howmanyfade {
   0%{
     opacity: 0;
   }
   100%{
-    opacity: 0.75;
+    opacity: 1;
   }
 }
 </style>
@@ -152,6 +177,10 @@ error: function(error) {
 
 <body>
 
+<script type="text/javascript">
+  document.body.classList.add('js-loading');
+</script>
+
 <div id="parentmessage" class="messagedrop">
 <div id="message">
 </div></div>
@@ -172,6 +201,8 @@ document.querySelector("#imageId").addEventListener('load', function() {
 image_width = document.getElementById("imageId").naturalWidth;
 
 image_height = document.getElementById("imageId").naturalHeight;
+
+document.body.classList.remove('js-loading');
 
 if (image_height/image_width <= 1.3){
 document.getElementById("imageId").style.width = "95vw";
@@ -200,15 +231,21 @@ document.querySelector("#imageId").addEventListener('load', function() {
   var $el = $('#imageId');
   var bottom = $el.position().top + $el.outerHeight(true);
   console.log(bottom);
-  document.getElementById("howmany").style.top = bottom+2;
-
+  document.getElementById("howmany").style.top = bottom + 2;
+  document.getElementById("message").style.WebkitAnimationPlayState = "running";
+  document.getElementById("howmany").style.WebkitAnimationPlayState = "running";
+  var imgtop = $el.position().top;
   var $el2 = $('#parentmessage');
   var bbheight = $el2.outerHeight(true)
   console.log(bbheight);
-  document.getElementById("parentmessage").style.top = $el.position().top - bbheight - 2;
-
+  document.getElementById("parentmessage").style.top = imgtop - bbheight + h*0.01;
 });
 </script>
+
+<script type="text/javascript">
+
+</script>
+
 
 </body>
 </html>
