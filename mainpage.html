@@ -238,7 +238,11 @@ document.querySelector("#imageId").addEventListener('load', function() {
   var $el2 = $('#parentmessage');
   var bbheight = $el2.outerHeight(true)
   console.log(bbheight);
+<<<<<<< HEAD
   document.getElementById("parentmessage").style.top = imgtop - bbheight + h*0.01;
+=======
+  document.getElementById("parentmessage").style.top = $el.position().top -bbheight + 2;
+>>>>>>> 91410489149064d9abba0dadde739f9847f01214
 });
 </script>
 
