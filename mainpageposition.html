@@ -16,6 +16,7 @@
 <link href="https://fonts.googleapis.com/css?family=Sonsie+One" rel="stylesheet">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/FitText.js/1.2.0/jquery.fittext.js"></script>
 
 <script>
   $(function() {
@@ -90,6 +91,8 @@ img {
   top: 2%;
   z-index: 999;
   font-size:100%;
+  display:block;
+  width:100%;
 }
 #message{
   animation-play-state: paused;
@@ -101,8 +104,8 @@ img {
   display: contents;
   text-align: center;
   /* color:#cb410b; */
-  font-family:'Sonsie One', cursive;
-  /* font-weight: 700; */
+  font-family:'Gaegu', cursive;
+  font-weight: 700;
 }
 .messagedrop{
   animation: textdrop 0.6s ease-in;
@@ -193,6 +196,7 @@ error: function(error) {
 
 <div id="parentmessage" class="messagedrop">
 <div id="message">
+  <iframe src="test.html" width = '400' height = '400'></iframe>
 </div></div>
 
 <div onclick="location.href='https://www.snapchat.com/unlock/?type=SNAPCODE&uuid=ce3d65a168104a7aace344e219c7ba68&metadata=01';">
@@ -271,7 +275,7 @@ var timer = window.setInterval(function(){
   var imgtop = $el.position().top;
   var $el2 = $('#parentmessage');
   var bbheight = $el2.outerHeight(true);
-  document.getElementById("parentmessage").style.top = imgtop - bbheight + h*0.01;
+  document.getElementById("parentmessage").style.top = imgtop - bbheight + h*0.005;
   document.getElementById("parentmessage").style.fontSize = 0.60*100 + '%';
 
 }
@@ -282,7 +286,7 @@ else {
   var imgtop = $el.position().top;
   var $el2 = $('#parentmessage');
   var bbheight = $el2.outerHeight(true);
-  document.getElementById("parentmessage").style.top = imgtop - bbheight + h*0.01;
+  document.getElementById("parentmessage").style.top = imgtop - bbheight + h*0.005;
   document.getElementById("parentmessage").style.fontSize = imagescale*100 + '%';
 };
 
@@ -303,6 +307,8 @@ console.log('hi');};
 // })
 ;
 </script>
-
+<script>
+jQuery("#parentmessage").fitText();
+</script>
 </body>
 </html>
