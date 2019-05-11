@@ -1,0 +1,262 @@
+<html><head>
+<title>34-2.FUN</title>
+<link rel="apple-touch-icon" sizes="180x180" href="/Favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/Favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/Favicon/favicon-16x16.png">
+<link rel="manifest" href="/Favicon/site.webmanifest">
+<link rel="mask-icon" href="/Favicon/safari-pinned-tab.svg" color="#22344e">
+<link rel="shortcut icon" href="/Favicon/favicon.ico">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-config" content="/Favicon/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css?family=Gaegu:300,700" rel="stylesheet">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script type="text/javascript">
+function horizchange(){
+  document.getElementById('imageId').style.width = 'auto';
+  document.getElementById('imageId').style.height = 70 + 'vh';
+};
+function vertchange(){
+  document.getElementById('imageId').style.width = 90+'vw';
+document.getElementById('imageId').style.height = 'auto';
+};
+</script>
+
+<script>
+function txtrsz(){
+  console.log('txtrsz')
+  $el = $('#imageId');
+  picwidth = $el.outerWidth(true);
+  console.log(picwidth)
+  document.getElementById('howmany').style.width = picwidth;
+  document.getElementById('message').style.width = picwidth;
+
+  imgleft = document.getElementById('imageId');
+  imgdim = imgleft.getBoundingClientRect();
+  document.getElementById('howmany').style.left = imgdim.left;
+  document.getElementById('message').style.left = imgdim.left;
+  document.getElementById('howmany').style.top = imgdim.bottom;
+  document.getElementById('message').style.height = imgdim.top;
+  document.getElementById('howmany').style.height = h-imgdim.bottom;
+
+  textFit(document.getElementsByClassName('howmany'), {alignHoriz: true, alignVert: true, minFontSize:10, maxFontSize:1000});
+  textFit(document.getElementsByClassName('message'), {alignHoriz: true, alignVert: true, maxFontSize:165});
+};
+function txtalign(){
+  textdiv= document.getElementById('howmany');
+  textclass = textdiv.getElementsByClassName('textFitted textFitAlignVert')[0];
+  classdim = textclass.getBoundingClientRect().height;
+  divdim = textdiv.getBoundingClientRect().height;
+  divtop = document.getElementById('howmany').style.top;
+  document.getElementById('howmany').style.top = parseInt(divtop)-(divdim - classdim)/2;
+
+  textdiv= document.getElementById('message');
+  textclass = textdiv.getElementsByClassName('textFitted textFitAlignVert')[0];
+  classdim = textclass.getBoundingClientRect().height;
+  divdim = textdiv.getBoundingClientRect().height;
+  divtop = 0;
+  // divtop=textdiv.getBoundingClientRect().top;
+  document.getElementById('message').style.top = parseInt(divtop)+(divdim - classdim)/2;
+};
+</script>
+
+<script>
+  $(function() {
+    var randomColor = Math.floor(Math.random()*16777215).toString(16);
+    $("body").css({
+        backgroundColor: '#' + randomColor
+    });
+  });
+</script>
+
+<script type="text/javascript">
+  picwidth = 0;
+  imgdim = 0;
+  textdiv = 0;
+  textclass = 0;
+  textdim = 0;
+  bbtitle = 0;
+</script>
+
+<script>
+var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+var firstDate = new Date(1998,11,21);
+var currentTime = new Date();
+var diffDays = Math.round(Math.abs((firstDate.getTime() - currentTime.getTime())/(oneDay)));
+</script>
+
+<style>
+.js-loading *,
+.js-loading *:before,
+.js-loading *:after {
+  animation-play-state: paused !important;}
+
+  html{width:100%;}
+
+  body{
+    width:100%;
+    background: red;
+    margin: 0px;
+    padding: 0px;
+  }
+
+  #Imageid{
+    animation-play-state: paused;
+    padding:1%;
+    background: white;
+    width: 95vw;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);}
+
+.imagefade {
+	        animation: slide-in-bck-tr 0.8s cubic-bezier(0.075, 0.820, 0.165, 1.000) forwards;
+          animation-delay: 0.01s;
+          opacity: 0;}
+@keyframes slide-in-bck-tr {
+  0% {
+            transform: translateZ(20vw) translateY(-50%) translateX(20vw);
+    opacity: 0;
+  }
+  100% {
+            transform: translateZ(-50%) translateY(-50%) translateX(-50%);
+            background: white;
+    opacity: 1;}}
+#message{
+  animation-play-state: paused;
+  opacity: 0;
+}
+  .message{
+    position:fixed;
+      width:900px;
+      height:300px;
+      left:100px;
+      margin:0px;
+      padding:0px;
+      font-family: 'Gaegu', cursive;
+      font-weight: 700;
+      color:white;
+
+      animation: textdrop 0.6s ease-in;
+      animation-fill-mode: forwards;
+      opacity: 0;
+      animation-delay: 0.8s;
+      background:;
+    }
+
+    @keyframes textdrop {
+      0%{
+        opacity: 0;
+        transform: translate(0,-10%);
+      }
+      100%{
+        opacity: 1;
+        transform: translate(0,0%);}}
+#howmany{
+  animation-play-state: paused;
+  opacity: 0;
+}
+  .howmany{
+    animation-play-state: paused;
+    position: fixed;
+      width:900px;
+      height:300px;
+      left:100px;
+      margin:0px;
+      padding:0px;
+      font-family: 'Gaegu', cursive;
+      font-weight: 300;
+      color: white;
+      animation: howmanyfade 1.3s ease-in-out;
+      animation-fill-mode: forwards;
+      opacity: 0;
+      animation-delay: 1.2s;}
+    @keyframes howmanyfade {
+      0%{
+        opacity: 0;
+      }
+      100%{
+        opacity: 1;}}
+</style>
+
+<script type="text/javascript">
+var url = "https://www.googleapis.com/drive/v3/files?orderBy=createdTime+desc&pageSize=1&q=%27168vvGRtUQjM7sprRhclIZqlZTCoDqgjo%27+in+parents&key=AIzaSyAK8jsoqumfAdDQaWcGhyBLGJlNMd4APDA";
+$.ajax({
+method: "GET",
+cache: false,
+url: url,
+success: function(response) {
+  bbid = 'http://drive.google.com/uc?id=' + response.files[0].id;
+  document.getElementById('imageId').src = bbid;
+
+  bbfilename = response.files[0].name;
+  bbtitle = bbfilename.substring(0, bbfilename.indexOf("."));
+  document.getElementById('message').innerHTML = bbtitle;
+},
+error: function(error) {
+  alert('error')
+},
+});
+</script>
+
+</head>
+<body>
+  <div><img src="" id="imageId" class="imagefade"></div>
+      <div class="message" id="message">🐍🦃🦉🐸👶🐢</div>
+    <div class="howmany" id="howmany">
+      <script>
+      document.getElementById("howmany").innerHTML ="SMOLLBB IS "+ diffDays + " MANY TODAY";
+      </script>
+    </div>
+
+    <script type="text/javascript">
+    document.querySelector("#imageId").addEventListener('load', function() {
+    w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+    h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+    console.log(h,w);
+      if (h/w > 1.25 ) {
+        vertchange();}
+      else if (h/w <= 1.25) {
+        horizchange();
+      }
+    });
+    </script>
+<script src="textFit.min.js"></script>
+<script>
+document.querySelector("#imageId").addEventListener('load', function() {txtrsz();});
+</script>
+
+<script>
+document.querySelector("#imageId").addEventListener('load', function() {
+  txtalign();
+  document.body.classList.remove('js-loading');
+  document.getElementById("imageId").style.WebkitAnimationPlayState = "running";
+  document.getElementById("message").style.WebkitAnimationPlayState = "running";
+  document.getElementById("howmany").style.WebkitAnimationPlayState = "running";
+
+});</script>
+
+<script type="text/javascript">
+window.addEventListener('orientationchange',function() {
+  if(document.getElementById('imageId').style.width == '90vw') {horizchange();}
+  else if(document.getElementById('imageId').style.height == '70vh') {vertchange();}
+});</script>
+
+<script>
+var resizeId;
+window.addEventListener('resize', function() {
+  clearTimeout(resizeId);
+  resizeId = setTimeout(doneResizing, 50);});
+function doneResizing(){
+  h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+  txtrsz();
+  txtalign();
+};
+</script>
+</body>
+</html>
