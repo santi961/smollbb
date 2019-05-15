@@ -1,55 +1,147 @@
-<html>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<head>
-<style>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
 
-html{width:100%;}
+  <head>
+    <meta charset="utf-8">
 
-  body{
-    width:100%;
-    background: red;
-    margin: 0px;
-    padding: 0px;
-  }
+    <link href="https://fonts.googleapis.com/css?family=Khula:800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:700" rel="stylesheet">
 
-  #Imageid{
-    width: 80vw;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-  }
-  .parentmessage{
-    position: fixed;
-    display: inline-block;
-    white-space: nowrap;
-    left: 100px;
-    width:900px;
-    height:400px;
+    <script src="textFit.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+function titleset(){
+  w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+
+if (h>w) {
+  document.getElementsByClassName('titlediv')[0].innerHTML = 'SMOLL👶<p>TODAY';
+  document.getElementsByClassName('answerhere')[0].style.height = 8 + 'vh';}
+else {
+  document.getElementsByClassName('titlediv')[0].innerHTML = 'SMOLL👶TODAY';
+  document.getElementsByClassName('answerhere')[0].style.height = 10 + 'vh';
 }
-  .box{
-      width:900px;
-      height:400px;
-      left:100px;
-      margin:0px;
-      padding:0px;
-    }
-</style>
-</head>
-<body>
-  <script>
-  document.querySelector("#image").addEventListener('load', function() {
-    $el = $('#imageId');
-    bottom = $el.position().top + $el.outerHeight(true);
-  </script>
+};
 
-  <div class="box">Fit</div>
-  <div
+function randquestion(){
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.open("GET", 'indexquestions.txt', false);
+  xmlhttp.send();
+  result = xmlhttp.responseText;
+  resultarray= result.split("\n");
+  var max = resultarray.length - 1;
+  var x = Math.floor(Math.random() * Math.floor(max))
+  resultarraystring= resultarray[x].replace(/\n. |\r/g, "")
+  document.getElementsByClassName('question')[0].innerHTML = resultarraystring+ "?";
+console.log(resultarray[x]);};
 
-<script src="textFit.min.js"></script>
-<script>
-textFit(document.getElementsByClassName('box'), {alignHoriz: true, alignVert: true, maxFontSize:1000});
+function textsize(){
+  textFit(document.getElementsByClassName('question'), {alignHoriz: true, alignVert: false, minFontSize:10, maxFontSize:1000});
+  textFit(document.getElementsByClassName('inputanswer'), {alignHoriz: true, alignVert: true, minFontSize:10, maxFontSize:1000});
+  textFit(document.getElementsByClassName('answerhere'), {alignHoriz: true, alignVert: true, minFontSize:10, maxFontSize:1000});
+  textFit(document.getElementsByClassName('titlediv'), {alignHoriz: true, alignVert: true, minFontSize:10, maxFontSize:1000});}
 </script>
 
-</body>
+<style media="screen">
+  /* h1{
+    border:0px;
+    margin: 0px;
+    padding: 0px;
+  } */
+  body{
+    background: #22344e;
+  }
+  input{
+    background-color: #cb410b;
+    width:75vw;
+    height:5vh;
+    font-size:6vh;
+    color:white;
+    font-family: 'Roboto Slab',serif;
+    border: 0px;
+  }
+  form{
+  position: relative;
+  border:0px;
+  padding: 0px;
+  margin: 0px;
+  /* top:1px; */
+  }
+
+  p{
+    margin:0px;
+    padding: 0px;
+    border: 0px;
+    line-height: 1vh;
+  }
+  /* .bodydiv{
+    color:white;
+  } */
+  .titlediv{
+    color: white;
+    height:25vh;
+    width: 98vw;
+    /* font-size: 18vw; */
+    /* line-height: 1vh; */
+    /* border:solid 2px black; */
+    font-family: 'Khula',sans-serif;
+  }
+
+  .answerhere{
+  height: 5vh;
+  width: 98vw;
+  /* font-size: 18vw; */
+  opacity: 0.5;
+  font-family: 'Roboto Slab',serif;
+  color: black;
+  /* border:solid 2px green; */
+  }
+  .inputanswer{
+    height: 11vh;
+    width:99vw;
+  font-size: 18vw;
+  color:#cb410b;
+  /* border:solid 2px blue; */
+  }
+  .question{
+    height:34vh;
+    width:98vw;
+    position: fixed;
+  /* font-size: 10vw; */
+  /* bottom: 5px; */
+  color: #cb410b;
+  font-weight: bold;
+
+  /* border:solid 2px purple; */
+  }
+</style>
+
+  </head>
+  <body>
+    <!-- <div class="bodydiv"> -->
+      <div class="titlediv">
+        SMOLL👶<p>TODAY
+      </div>
+      <div class="answerhere">
+        answer here
+      </div>
+      <div class="inputanswer">
+    <form action="bbpage.html" style="position:relative;top:1px;"><input class="animatedsecwet" type="text" autofocus style=""></form>
+      </div>
+      <div class="question" id="question">
+        what does🐢eat?
+      </div>
+    <!-- </div> -->
+
+<script>
+  titleset();
+</script>
+<script>
+  randquestion();
+</script>
+<script>
+  textsize();
+</script>
+  </body>
 </html>

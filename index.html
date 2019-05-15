@@ -1,177 +1,139 @@
-<html>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
 <head>
-<title>34-2.FUN</title>
-<link rel="apple-touch-icon" sizes="180x180" href="/Favicon/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/Favicon/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/Favicon/favicon-16x16.png">
-<link rel="manifest" href="/Favicon/site.webmanifest">
-<link rel="mask-icon" href="/Favicon/safari-pinned-tab.svg" color="#22344e">
-<link rel="shortcut icon" href="/Favicon/favicon.ico">
-<meta name="msapplication-TileColor" content="#da532c">
-<meta name="msapplication-config" content="/Favicon/browserconfig.xml">
-<meta name="theme-color" content="#ffffff">
+  <title>34-2.FUN</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="/Favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/Favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/Favicon/favicon-16x16.png">
+  <link rel="manifest" href="/Favicon/site.webmanifest">
+  <link rel="mask-icon" href="/Favicon/safari-pinned-tab.svg" color="#22344e">
+  <link rel="shortcut icon" href="/Favicon/favicon.ico">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-config" content="/Favicon/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+  <meta charset="utf-8">
+  <link href="https://fonts.googleapis.com/css?family=Khula:800" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:700" rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css?family=Khula:800" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:700" rel="stylesheet">
+  <script src="textFit.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-  <style>
+<script type="text/javascript">
+function titleset(){
+  w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+  h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 
-    body{
-      background: -webkit-linear-gradient(-45deg, rgba(41,66,102,1) 0%,rgba(37,54,77,1) 100%);
-      margin: 0;
-      /* border-style: solid;
-      border-color: black;
-      border-width:medium;
-      margin: 0%; */
-    }
+  if (h>w) {
+    document.getElementsByClassName('titlediv')[0].innerHTML = 'SMOLL👶<p>TODAY';}
+  else {
+    document.getElementsByClassName('titlediv')[0].innerHTML = 'SMOLL👶TODAY';}
+};
 
-    p{
-      display: block;
-      margin-top: -0.65em;
-      margin-bottom: 1em;
-      margin-left: 0;
-      margin-right: 0;
-    }
+function randquestion(){
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.open("GET", 'indexquestions.txt', false);
+  xmlhttp.send();
+  result = xmlhttp.responseText;
+  resultarray= result.split("\n");
+  var max = resultarray.length - 1;
+  var x = Math.floor(Math.random() * Math.floor(max))
+  resultstring= resultarray[x].replace(/\n. |\r/g, "")
+  // resultstring = resultstring.replace(/ /g,"<br>");
+  document.getElementsByClassName('question')[0].innerHTML = resultstring+ "?";
+  console.log(resultarray[x]);};
 
-    input {
-    border: none;
-    background: transparent;
-    outline: none;
+function textsize(){
+  textFit(document.getElementsByClassName('question'), {alignHoriz: true, alignVert: true, minFontSize:10, maxFontSize:1000});
+  textFit(document.getElementsByClassName('inputanswer'), {alignHoriz: true, alignVert: true, minFontSize:10, maxFontSize:1000});
+  textFit(document.getElementsByClassName('titlediv'), {alignHoriz: true, alignVert: true, minFontSize:10, maxFontSize:1000});}
+</script>
+
+<style media="screen">
+  body{background: #22344e;overflow: hidden}
+
+  input{
     text-align: center;
-    color:#cb410b;
-    font-family: 'Roboto Slab', serif;
-    letter-spacing: 1px;
-    font-size: 6vw;
-    transform: translate(0,-350%);
-}
+    background-color: #cb410b;
+    width:94vw;
+    height:10vh;
+    font-size:6vh;
+    color:white;
+    font-family: 'Roboto Slab',serif;
+    /* border:0px; */
+    border: solid 0.46vw white;
+    outline:none;
+  }
+  center{border:0px;padding: 0px;margin: 0px;}
+  div{border:0px;padding: 0px;margin: 0px;}
+  form{position: relative;border:0px;padding: 0px;margin: 0px;}
+  p{margin:0px;padding: 0px;border: 0px;line-height: 1vh;}
 
-::placeholder{
-  color: white;
-  opacity: 0.5;
-}
+  .titlediv{
+    display: inline-block;
+    color: white;
+    height:25vh;
+    width: 98vw;
+    font-family: 'Khula',sans-serif;
+    text-shadow: 0.52em 0.52em 0.25em black;
 
-    #bodysizing{
-      height:95vh;
-      width: auto;
-      margin:0px;
-      padding:0px;
-      border:0px;
-    }
-
-    #secwet{
-      text-align: center;
-      color:black;
-      font-family: 'Roboto Slab', serif;
-      letter-spacing: 1px;
-      font-size: 4vw;
-      display: run-in;
-      opacity: 0.4;
-      transform: translate(0,-250%);
-}
-    #heading{
-      text-align: center;
-      color:white;
-      font-size: 9vw;
-      font-family: 'Khula',sans-serif;
-      letter-spacing: -2px;
-
-      /* margin: -5.5% auto;
-      background: white; */
-    }
-
-    #question{
-      color:#cb410b;
-      font-size: 10vw;
-      margin: 5px;
-      /* font-size: calc(0.75em + 5vh); */
-
-      width: min-intrinsic;
-      width: -webkit-min-content;
-      width: -moz-min-content;
-      width: min-content;
-      display: table-caption;
-      display: -ms-grid;
-      -ms-grid-columns: min-content;
-      transform: translate(0,-32%);
-    }
-
-    #answer{
-      color:white;
-    }
-
-    .animatedheading{
-      animation: headingdrop 1s ease-out;
-      animation-fill-mode: forwards;
-      /* border-style: solid; */
-      border-radius:200px;
-      /* background:black; */
-      text-shadow: 6px 6px 2px black;
-    }
-
-    @keyframes headingdrop{
-      from{
-        opacity:0;
-        transform: translate(0,-100px);
-      }
-      to{
-        opacity:1;
-        transform: translate(0,0px);
-      }
-    }
-
-    .animatedsecwet{
-      animation: secwetfade 0.5s ease-out;
-      animation-fill-mode: forwards;
-      animation-delay: 2.2s;
+    animation: titlediv 0.8s ease-out;
+    animation-fill-mode: forwards;
+  }
+  @keyframes titlediv{
+    from{
       opacity:0;
-    }
+      transform: translate(0,-100px);}
+    to {
+      opacity:1;
+      transform: translate(0,0px);}
+  }
 
-    @keyframes secwetfade {
-      0%{
-        opacity: 0;
-      }
-      100%{
-        opacity: 1;
-      }
-    }
+  .inputanswer{
+  display: inline-block;
+  height: 11vh;
+  width:98vw;
+  font-size: 18vw;
+  color:#cb410b;
 
-    .animatedquestion{
-      animation:questionslide 0.8s ease-out;
-      animation-fill-mode: forwards;
-      animation-delay:1.5s;
-      opacity:0;
-      /* transform: translate(-150px,0); */
-    }
+  animation: textanim 0.8s ease-out;
+  animation-fill-mode: forwards;
+  animation-delay: 1.6s;
+  opacity:0;
+  }
 
-    @keyframes questionslide {
-    0%{
-      opacity: 0;
-      /* transform: translate(-100px,0); */
-    }
-    100%{
-      opacity: 1;
-      /* transform: translate(10px,0); */
-    }
-    }
-    </style>
-  </head>
-  <body>
-    <div id="bodysizing">
-    <div id="heading">
-      <h1 class="animatedheading">SMOLL👶<p>TODAY</p></h1>
-      </div>
-      <div id="secwet">
-        <h1 class="animatedsecwet">answer secwet</h1>
-        </div>
-        <center><form action="test0.html"><input class="animatedsecwet" type="text" autofocus></form></center>
-        <div id="question">
-          <h1 class="animatedquestion">
-            <script>
-                        var myArray = ['who is cutest smollest tuwtle', 'who is cutestbb', 'wat is P.B.J!','how many is smollbb', 'who is siwwybb', 'what does 🐢 eat', 'wat is mamoose doin','smollbb fav food'];
-            var rand = myArray[Math.floor(Math.random() * myArray.length)];
-              document.write(rand)</script>
-          </h1>
-          </div>
-        </div>
-    </body>
+  .question{
+  display: inline-block;
+  min-height: 10vh;
+  max-height:50vh;
+  width:90vw;
+  color: #cb410b;
+  font-weight: bold;
+
+  animation: textanim 0.8s ease-out;
+  animation-fill-mode: forwards;
+  animation-delay: 1s;
+  opacity:0;
+  }
+
+  @keyframes textanim {
+    0%{opacity: 0;}
+    100%{opacity: 1;}
+  }
+</style>
+
+</head>
+<body>
+  <center><div class="titlediv">SMOLL👶TODAY</div></center>
+  <center><div class="question" id="question"></div></center>
+  <div style="height:0.25vh;width:1px;"></div>
+  <center><div class="inputanswer">
+  <form action="bbpage.html"><input class="animatedsecwet" type="text"></form></div></center>
+  <script>titleset();</script>
+  <script>randquestion();</script>
+  <script>textsize();</script>
+  <script>
+      window.onorientationchange = function(){
+      window.location.reload();};
+  </script>
+</body>
 </html>
